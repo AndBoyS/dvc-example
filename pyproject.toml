@@ -34,6 +34,8 @@ types-tqdm = "^4.66.0.20240106"
 dvc = "^3.51.2"
 pre-commit = "^3.7.1"
 dvclive = "^3.46.0"
+pandas-stubs = "^2.2.2.240603"
+data-science-types = "^0.2.23"
 
 [build-system]
 requires = ["poetry-core"]
