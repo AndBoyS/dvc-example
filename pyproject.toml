@@ -38,6 +38,7 @@ pandas-stubs = "^2.2.2.240603"
 data-science-types = "^0.2.23"
 types-pyyaml = "^6.0.12.20240311"
 pyyaml = "^6.0.1"
+dvc-webdav = "^3.0.0"
 
 [build-system]
 requires = ["poetry-core"]

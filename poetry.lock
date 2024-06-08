@@ -1295,6 +1295,24 @@ docs = ["mkdocs (>=1.5.2,<2)", "mkdocs-gen-files (>=0.5.0,<1)", "mkdocs-material
 tests = ["pytest (>=7,<9)", "pytest-celery", "pytest-cov (>=4.1.0)", "pytest-mock", "pytest-rerunfailures", "pytest-sugar", "pytest-test-utils (>=0.0.6)"]
 
 [[package]]
+name = "dvc-webdav"
+version = "3.0.0"
+description = "webdav plugin for dvc"
+optional = false
+python-versions = ">=3.8"
+files = [
+    {file = "dvc-webdav-3.0.0.tar.gz", hash = "sha256:65e7eef2ebc83415a8ddbdcb579bf219a3797c67e7a62d4568c5c82de2b6a508"},
+    {file = "dvc_webdav-3.0.0-py3-none-any.whl", hash = "sha256:90f19ae5bd6254723bea0a1b47bfafc636769f454777c4ef1d6a9d74dca4e525"},
+]
+
+[package.dependencies]
+dvc = "*"
+webdav4 = ">=0.9.3"
+
+[package.extras]
+tests = ["cheroot (==8.6.0)", "dvc[testing]", "flaky (==3.7.0)", "mypy (==0.991)", "pylint (==2.15.9)", "pytest (==6.2.5)", "pytest-cov (==3.0.0)", "pytest-lazy-fixture (==0.6.3)", "pytest-mock (==3.6.1)", "pytest-xdist (==2.4.0)", "wsgidav (==3.1.1)"]
+
+[[package]]
 name = "dvclive"
 version = "3.46.0"
 description = "Experiments logger for ML projects."
@@ -5116,6 +5134,30 @@ docs = ["furo", "sphinx", "sphinx-copybutton", "sphinx-inline-tabs", "sphinx-not
 tests = ["coverage[toml]"]
 
 [[package]]
+name = "webdav4"
+version = "0.9.8"
+description = "WebDAV client library with an fsspec-based filesystem and a CLI"
+optional = false
+python-versions = ">=3.7"
+files = [
+    {file = "webdav4-0.9.8-py3-none-any.whl", hash = "sha256:3ad1d5912401861d9ca3f03600b79ad35a135ff15a707ccf6df78db6d369ad0a"},
+    {file = "webdav4-0.9.8.tar.gz", hash = "sha256:fc7748df33a375de13ddb5f4594f5799f9f3dc13c005b7b9c45c120aad745694"},
+]
+
+[package.dependencies]
+httpx = ">=0.20,<1.0.0"
+python-dateutil = ">=2.8.1"
+
+[package.extras]
+all = ["webdav4[fsspec,http2]"]
+dev = ["webdav4[docs,fsspec,http2,qa,tests]"]
+docs = ["furo (==2022.9.29)", "myst-parser (==0.18.1)", "sphinx (==5.3)", "sphinx-copybutton (==0.5)"]
+fsspec = ["fsspec (>=2021.7)"]
+http2 = ["httpx[http2] (>=0.20,<1.0.0)"]
+qa = ["mypy (==0.982)", "pre-commit", "pylint (==2.15.5)", "pylint-pytest (==1.1.2)", "types-pkg-resources", "types-python-dateutil"]
+tests = ["cheroot", "colorama", "pytest", "pytest-cov", "pytest-xdist", "typing-extensions", "wsgidav"]
+
+[[package]]
 name = "webencodings"
 version = "0.5.1"
 description = "Character encoding aliases for legacy web content"
@@ -5276,4 +5318,4 @@ test = ["zope.testing"]
 [metadata]
 lock-version = "2.0"
 python-versions = "~3.11"
-content-hash = "d1d3110f62c965be8cc293a9b9cf85268477effd556ed638c6a3cbfdc43fe3d2"
+content-hash = "ac0044207b6313a558015473002a867c798f1b29dc50b57fdb882b2c6be41668"
