@@ -1,4 +1,0 @@
-[core]
-    remote = myremote
-['remote "myremote"']
-    url = webdavs://51.250.110.49:4000/apps/files/
