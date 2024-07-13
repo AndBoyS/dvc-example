@@ -1,0 +1,9 @@
+artifacts:
+  example/random_forest:
+    path: data/models/example/random_forest.pth
+    type: model
+metrics:
+- dvclive_eval/metrics.json
+plots:
+- dvclive_eval/plots/metrics:
+    x: step
