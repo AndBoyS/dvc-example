@@ -14,14 +14,14 @@ stages:
     outs:
     - path: data/datasets/example_set/data.pkl
       hash: md5
-      md5: f1486b98e0e4cc7f46fb78f928cf155a
+      md5: bf5aa3fb8604ce3cb372eb7641f2b9a3
       size: 9219
   train:
     cmd: python src/pipelines/example/train.py
     deps:
     - path: data/datasets/example_set/data.pkl
       hash: md5
-      md5: f1486b98e0e4cc7f46fb78f928cf155a
+      md5: bf5aa3fb8604ce3cb372eb7641f2b9a3
       size: 9219
     params:
       src/pipelines/example/params.yaml:
@@ -37,18 +37,18 @@ stages:
     outs:
     - path: data/models/example_set/random_forest.pth
       hash: md5
-      md5: 7df3fa51de43f7c88989b578d839e9cb
-      size: 180287
+      md5: a028cd8a4ab2648b75f5315e1d26641c
+      size: 150847
   eval:
     cmd: python src/pipelines/example/eval.py
     deps:
     - path: data/models/example_set/random_forest.pth
       hash: md5
-      md5: 7df3fa51de43f7c88989b578d839e9cb
-      size: 180287
+      md5: a028cd8a4ab2648b75f5315e1d26641c
+      size: 150847
     outs:
     - path: dvclive/example_set/eval
       hash: md5
-      md5: 57ec87ebd556c9ec40e95e7fefe85951.dir
-      size: 72
+      md5: a6d53ab1d1d6535dde16b274ca37b286.dir
+      size: 46
       nfiles: 2

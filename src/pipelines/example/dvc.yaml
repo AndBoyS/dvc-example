@@ -1,7 +1,6 @@
 vars:
   - cur_folder: 'src/pipelines/example'
   - repo_root: '../../..'
-  - params.yaml
 
 stages:
   preprocess:
