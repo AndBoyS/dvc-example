@@ -1,3 +1,2 @@
 .DS_Store
-/dvclive_train
-/dvclive_eval
+*.pyc

@@ -1,60 +1,54 @@
 schema: '2.0'
 stages:
-  train:
-    cmd: python src/pipelines/example/train.py
+  preprocess:
+    cmd: python src/pipelines/example/preprocess.py
     params:
-      src/pipelines/example/params.py:
-        DataConfig:
+      src/pipelines/example/params.yaml:
+        data_config:
+          data_path: data/datasets/example_set/data.pkl
           n_samples: 100
           n_features: 10
           n_classes: 2
           test_size: 0.2
           random_state: 42
-        RandomForestConfig:
-          n_estimators: 100
-          criterion: gini
-          max_depth:
-          min_samples_split: 2
-        TrainConfig:
-          model: random_forest
-          output_path: data/models/example/random_forest.pth
-          artifact_name: example/random_forest
-          metrics_train_path: dvclive_train
-          metrics_eval_path: dvclive_eval
     outs:
-    - path: data/models/example/random_forest.pth
+    - path: data/datasets/example_set/data.pkl
       hash: md5
-      md5: 38f5f986b40878857774c3d5c0946522
-      size: 206175
-    - path: dvclive_train
+      md5: f1486b98e0e4cc7f46fb78f928cf155a
+      size: 9219
+  train:
+    cmd: python src/pipelines/example/train.py
+    deps:
+    - path: data/datasets/example_set/data.pkl
       hash: md5
-      md5: fcd2b7c982e7b7e539a29426e418af9e.dir
-      size: 3
-      nfiles: 1
+      md5: f1486b98e0e4cc7f46fb78f928cf155a
+      size: 9219
+    params:
+      src/pipelines/example/params.yaml:
+        train_config:
+          model: random_forest
+          output_path: data/models/example_set/random_forest.pth
+          log_root: dvclive/example_set
+          random_forest_config:
+            n_estimators: 100
+            criterion: gini
+            max_depth:
+            min_samples_split: 2
+    outs:
+    - path: data/models/example_set/random_forest.pth
+      hash: md5
+      md5: 7df3fa51de43f7c88989b578d839e9cb
+      size: 180287
   eval:
     cmd: python src/pipelines/example/eval.py
     deps:
-    - path: data/models/example/random_forest.pth
+    - path: data/models/example_set/random_forest.pth
       hash: md5
-      md5: 38f5f986b40878857774c3d5c0946522
-      size: 206175
-    params:
-      src/pipelines/example/params.py:
-        DataConfig:
-          n_samples: 100
-          n_features: 10
-          n_classes: 2
-          test_size: 0.2
-          random_state: 42
-        TrainConfig:
-          model: random_forest
-          output_path: data/models/example/random_forest.pth
-          artifact_name: example/random_forest
-          metrics_train_path: dvclive_train
-          metrics_eval_path: dvclive_eval
+      md5: 7df3fa51de43f7c88989b578d839e9cb
+      size: 180287
     outs:
-    - path: dvclive_eval
+    - path: dvclive/example_set/eval
       hash: md5
-      md5: ca49ed5e3ba8db80c29c9a7a225ac499.dir
+      md5: 57ec87ebd556c9ec40e95e7fefe85951.dir
       size: 72
       nfiles: 2

@@ -1,27 +1,31 @@
 vars:
-  - repo_path: '../../..'
   - cur_folder: 'src/pipelines/example'
-  - params.py
+  - repo_root: '../../..'
+  - params.yaml
+
 stages:
+  preprocess:
+    cmd: python ${cur_folder}/preprocess.py
+    wdir: ${repo_root}
+    params:
+      - ${cur_folder}/params.yaml:
+        - data_config
+    outs:
+    - ${data_config.data_path}
   train:
     cmd: python ${cur_folder}/train.py
-    wdir: ${repo_path}
+    wdir: ${repo_root}
     params:
-    - ${cur_folder}/params.py:
-      - DataConfig
-      - TrainConfig
-      - RandomForestConfig
+      - ${cur_folder}/params.yaml:
+        - train_config
+    deps:
+    - ${data_config.data_path}
     outs:
-    - ${TrainConfig.output_path}
-    - ${TrainConfig.metrics_train_path}
+    - ${train_config.output_path}
   eval:
     cmd: python ${cur_folder}/eval.py
-    wdir: ${repo_path}
-    params:
-    - ${cur_folder}/params.py:
-      - DataConfig
-      - TrainConfig
+    wdir: ${repo_root}
     deps:
-    - ${TrainConfig.output_path}
+    - ${train_config.output_path}
     outs:
-    - ${TrainConfig.metrics_eval_path}
+    - ${train_config.log_root}/eval

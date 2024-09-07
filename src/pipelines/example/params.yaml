@@ -1,0 +1,18 @@
+data_config:
+  data_path: 'data/datasets/example_set/data.pkl'
+  n_samples: 100
+  n_features: 10
+  n_classes: 2
+  test_size: 0.2
+  random_state: 42
+
+train_config:
+  model: "random_forest"
+  output_path: "data/models/example_set/random_forest.pth"
+  log_root: "dvclive/example_set"
+  
+  random_forest_config:
+    n_estimators: 100
+    criterion: "gini"
+    max_depth: null
+    min_samples_split: 2
